@@ -14,6 +14,7 @@ export async function getAllFurniture(req, res) {
         })
     //send back array furniture
     res.send(collection);
+    res.set('Cache-Control', 'public', 'max-age=300, s-maxage=600')//cache from firebase web
 }
 
 //create
