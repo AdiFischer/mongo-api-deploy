@@ -1,5 +1,6 @@
 import dbConnect from "./dbConnect.js";
 import { ObjectId } from "mongodb";
+// importing ObjectId- unique identifiers for all the docs in db
 
 export async function getAllFurniture(req, res) {
     // connect to db
@@ -14,7 +15,8 @@ export async function getAllFurniture(req, res) {
         })
     //send back array furniture
     res.send(collection);
-    res.set('Cache-Control', 'public', 'max-age=300, s-maxage=600')//cache from firebase web
+    res.set('Cache-Control', 'public', 'max-age=300, s-maxage=600')
+    //cache from firebase web
 }
 
 //create
@@ -22,7 +24,8 @@ export async function addNewFurniture(req, res) {
 
     //get new furniture from the body of the request
     const { brand, modle, type, price } = req.body
-    const newFurniture = { brand, modle, type, price }// price: Number(price)-if price is num, not string
+    const newFurniture = { brand, modle, type, price }
+    // price: Number(price)-if price is num, not string
     //connect db
     const db = dbConnect()
     //put the new furniture in our furn collection in our db
