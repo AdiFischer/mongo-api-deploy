@@ -1,7 +1,8 @@
 import dbConnect from "./dbConnect.js";
 import { ObjectId } from "mongodb";
 // importing ObjectId- unique identifiers for all the docs in db
-
+ 
+export const getAllFurniture = async (req, res) => {
 export async function getAllFurniture(req, res) {
     // connect to db
     const db = dbConnect()
