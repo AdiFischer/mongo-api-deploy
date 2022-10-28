@@ -2,7 +2,7 @@ import dbConnect from "./dbConnect.js";
 import { ObjectId } from "mongodb";
 // importing ObjectId- unique identifiers for all the docs in db
  
-export const getAllFurniture = async (req, res) => {
+// export const getAllFurniture = async (req, res) => {
 export async function getAllFurniture(req, res) {
     // connect to db
     const db = dbConnect()
@@ -44,12 +44,12 @@ export async function updateFurniture(req, res) {
 
     const { furnitureId } = req.params
     const db = dbConnect()
-
-    await db.collection('furniture')
-        .findOneAndUpdate({ _id: new ObjectId(furnitureId) }, { $set: req.body })
-        .catch(err => {
-            res.status(500).send(err)
-            return
-        })
-    res.status(202).send({ message: "furniture updated" })
+    
+        await db.collection('furniture')
+            .findOneAndUpdate({ _id: new ObjectId(furnitureId) }, { $set: req.body })
+            .catch(err => {
+                res.status(500).send(err)
+                return
+            })
+        res.status(202).send({ message: "furniture updated" })
 }
